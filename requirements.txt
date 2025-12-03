@@ -17,4 +17,4 @@ gradio>=4.40.0
 
 # Utilities
 pandas
- entencepiece
+sentencepiece
