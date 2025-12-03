@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Streamlit
+.streamlit/
+
+# Model files
+*.bin
+*.safetensors
+*.gguf
+*.pth
+*.pt
+models/
+checkpoints/
+lora_model/
+gaia-rtx-artifacts/
+
+# Data
+*.csv
+*.json
+*.parquet
+data/raw/
+data/processed/
+
+# Logs
+*.log
+logs/
+wandb/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/

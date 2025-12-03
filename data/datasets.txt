@@ -1,0 +1,5 @@
+# List your HuggingFace datasets here (one per line)
+# Lines starting with # are ignored
+
+databricks/databricks-dolly-15k
+OpenAssistant/oasst1
