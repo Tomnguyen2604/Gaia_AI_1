@@ -1,0 +1,13 @@
+# Gaia Knowledge Base Datasets
+# List CSV files for RAG knowledge base (one per line)
+# Lines starting with # are ignored
+
+# Local CSV files (for RAG knowledge base)
+gaia_identity.csv
+gaia_5k.csv
+natural_medicine_articles.csv
+natural_medicine_train.csv
+
+# HuggingFace datasets (skipped by RAG, used for training only)
+databricks/databricks-dolly-15k
+OpenAssistant/oasst1

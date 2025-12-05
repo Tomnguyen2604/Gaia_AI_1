@@ -21,23 +21,50 @@ env/
 # Streamlit
 .streamlit/
 
-# Model files
+# Model files (large files - don't commit)
 *.bin
 *.safetensors
 *.gguf
 *.pth
 *.pt
+*.h5
+*.onnx
+*.msgpack
 models/
 checkpoints/
 lora_model/
+
+# Gaia model directories (large - don't commit)
+server/gaia-merged/
+server/gaia-artifacts/
+server/gaia-rtx-artifacts/
+gaia-merged/
+gaia-artifacts/
 gaia-rtx-artifacts/
 
-# Data
+# RAG knowledge base (generated locally)
+server/knowledge_base/
+knowledge_base/
+
+# Data files (large datasets)
 *.csv
-*.json
 *.parquet
-data/raw/
-data/processed/
+server/data/*.csv
+!server/data/datasets.txt
+!server/data/datasets_with_identity.txt
+
+# Chat history (personal data)
+server/chat_history/
+chat_history/
+
+# JSON files (except config files)
+*.json
+!package.json
+!package-lock.json
+!tsconfig.json
+!.vscode/*.json
+!frontend/**/*.json
+!server/data/datasets*.txt
 
 # Logs
 *.log
@@ -57,3 +84,15 @@ build/
 dist/
 *.egg-info/
 cloudflared.exe
+
+# Frontend (Next.js)
+node_modules/
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.env.local
+frontend/.env*.local
+
+# Frontend build artifacts
+*.tsbuildinfo
+next-env.d.ts

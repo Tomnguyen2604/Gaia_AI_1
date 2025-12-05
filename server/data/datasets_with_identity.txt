@@ -1,0 +1,11 @@
+# Gaia training datasets
+# Lines starting with # are ignored
+# Supports both HuggingFace datasets and local CSV files
+
+# Gaia identity (local CSV)
+gaia_identity.csv
+natural_medicine_train.csv
+
+# General knowledge datasets (HuggingFace)
+databricks/databricks-dolly-15k
+OpenAssistant/oasst1
