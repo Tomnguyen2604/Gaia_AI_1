@@ -3,20 +3,46 @@
 **Mother Nature AI** - A nurturing AI assistant powered by Gemma-2-2B.  
 Fine-tune via LoRA, chat via Streamlit UI with 32k context window.
 
+## 📁 Project Structure
 
-
-
+```
+Gaia/
+├── server/              # AI Backend (all AI components)
+│   ├── scripts/        # Python scripts (training, chat, utilities)
+│   ├── data/           # Training datasets
+│   ├── gaia-merged/    # Fine-tuned models (excluded from git)
+│   ├── templates/      # Jinja2 templates
+│   ├── main.py         # FastAPI backend
+│   └── rag_system.py   # RAG implementation
+├── frontend/           # Next.js Web UI
+├── .venv/             # Python virtual environment
+├── *.bat              # Quick start scripts
+└── *.md               # Documentation
+```
 
 ## ✅ Features
+
+### Core AI
 - ✅ **Gemma-2-2B-IT** with 32k context window
 - ✅ LoRA fine-tuning with BF16 precision
-- ✅ **Streamlit chat interface** with real-time settings
 - ✅ Up to 8192 token responses
-- ✅ Multiple dataset support (CSV + HuggingFace)
 - ✅ Optimized for RTX GPUs (tested on RTX 5080)
 - ✅ Custom identity training (Gaia persona)
 - ✅ **Automatic model validation** - detects and backs up corrupted models
 - ✅ **Auto-merge after training** - ready to use immediately
+
+### User Interfaces
+- ✅ **Streamlit chat interface** with professional dark mode
+- ✅ **Next.js Web UI** with shadcn/ui components
+- ✅ Real-time settings and conversation history
+- ✅ Voice input support
+- ✅ Conversation export (Markdown, JSON, Text)
+
+### Advanced Features
+- ✅ **RAG System** - Retrieval-Augmented Generation with scientific citations
+- ✅ Multiple dataset support (CSV + HuggingFace)
+- ✅ FastAPI backend for production deployment
+- ✅ Git LFS support for large model files
 
 ## 🚀 Quickstart
 
@@ -108,6 +134,25 @@ If your merged model generates gibberish, the training script will:
 - Backup the corrupted model with timestamp
 - Train and create a fresh merged model
 
+### 🧠 RAG System (Optional)
+
+Add knowledge retrieval with scientific citations:
+
+```bash
+cd server
+
+# Install RAG dependencies
+pip install sentence-transformers chromadb
+
+# Build knowledge base (one-time setup)
+python scripts/build_knowledge_base.py
+
+# Start server with RAG enabled
+python main.py
+```
+
+See [RAG_SETUP.md](RAG_SETUP.md) for detailed instructions.
+
 ### 🌐 Deploy with Cloudflare Tunnel (Public Access)
 ```bash
 # Terminal 1: Start Streamlit
@@ -117,3 +162,79 @@ cd server && streamlit run scripts/chat.py
 .\cloudflared.exe tunnel --url http://localhost:8501
 ```
 Get a public HTTPS URL to share your Gaia instance!
+
+## 🚀 Deployment
+
+Deploy Gaia to the cloud for 24/7 access:
+
+- **[QUICKSTART_DEPLOYMENT.md](QUICKSTART_DEPLOYMENT.md)** - 10-minute deployment guide ⚡
+- **[DEPLOYMENT.md](DEPLOYMENT.md)** - Complete deployment documentation
+
+**Quick Deploy:**
+```bash
+# Option 1: Vercel Frontend + Local Backend (Best Performance)
+deploy_vercel.bat
+start_local_backend.bat
+
+# Option 2: Hugging Face Spaces (24/7 Availability)
+# See QUICKSTART_DEPLOYMENT.md
+```
+
+## 📚 Documentation
+
+- **[RAG_SETUP.md](RAG_SETUP.md)** - RAG system setup and configuration
+- **[WEB_UI_SETUP.md](WEB_UI_SETUP.md)** - Web UI installation guide
+- **[WEB_UI_README.md](WEB_UI_README.md)** - Web UI features and usage
+- **[DEPLOYMENT.md](DEPLOYMENT.md)** - Cloud deployment guide
+
+## 🛠️ Development
+
+### Project Organization
+
+All AI-related code is in the `server/` directory:
+- `server/scripts/` - Training, chat, and utility scripts
+- `server/data/` - Training datasets and configuration
+- `server/gaia-merged/` - Fine-tuned models (not in git)
+- `server/main.py` - FastAPI backend server
+- `server/rag_system.py` - RAG implementation
+
+### Running Scripts
+
+Always run scripts from the `server/` directory:
+
+```bash
+cd server
+
+# Training
+python scripts/finetune.py --datasets-file data/datasets_with_identity.txt --bf16
+
+# Chat
+streamlit run scripts/chat.py
+
+# RAG setup
+python scripts/build_knowledge_base.py
+
+# FastAPI server
+python main.py
+```
+
+Or use the convenient batch files from the root:
+```bash
+start_chat.bat      # Streamlit UI
+start_web_ui.bat    # Next.js + FastAPI
+train_safe.bat      # Training (BF16)
+train_8bit.bat      # Training (8-bit)
+```
+
+## 🤝 Contributing
+
+This project uses:
+- **Python 3.11+** for AI backend
+- **Next.js 14** for web frontend
+- **Git LFS** for large model files
+
+Model files are excluded from git via `.gitignore`. Only code and configuration are tracked.
+
+## 📄 License
+
+This project uses the Gemma-2-2B model which requires acceptance of Google's terms.

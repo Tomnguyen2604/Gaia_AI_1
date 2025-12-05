@@ -92,7 +92,11 @@ frontend/.next/
 frontend/out/
 frontend/.env.local
 frontend/.env*.local
+frontend/.env.production.local
 
 # Frontend build artifacts
 *.tsbuildinfo
 next-env.d.ts
+
+# Deployment
+.vercel
