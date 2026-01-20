@@ -16,13 +16,19 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 from typing import List, Optional
 import time
 from rag_system import GaiaRAG, load_knowledge_from_csv
+from strawberry.fastapi import GraphQLRouter
+from graphql_schema import schema
 
 app = FastAPI(title="Gaia API", version="1.0.0")
 
 # CORS middleware for Next.js frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://localhost:3001"],
+    allow_origins=[
+        "http://localhost:3000", 
+        "http://localhost:3001",
+        "https://studio.apollographql.com"  # Apollo Studio
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -121,6 +127,10 @@ async def health():
         "device": str(model.device) if model else None,
         "cuda_available": torch.cuda.is_available()
     }
+
+# GraphQL endpoint
+graphql_app = GraphQLRouter(schema)
+app.include_router(graphql_app, prefix="/graphql")
 
 @app.post("/chat", response_model=ChatResponse)
 async def chat(request: ChatRequest):

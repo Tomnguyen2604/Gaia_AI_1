@@ -40,6 +40,7 @@ Gaia/
 
 ### Advanced Features
 - ✅ **RAG System** - Retrieval-Augmented Generation with scientific citations
+- ✅ **GraphQL API** - Real-time streaming with subscriptions and flexible queries
 - ✅ Multiple dataset support (CSV + HuggingFace)
 - ✅ FastAPI backend for production deployment
 - ✅ Git LFS support for large model files
@@ -182,6 +183,7 @@ start_local_backend.bat
 
 ## 📚 Documentation
 
+- **[GRAPHQL_SETUP.md](GRAPHQL_SETUP.md)** - GraphQL API setup and usage guide
 - **[RAG_SETUP.md](RAG_SETUP.md)** - RAG system setup and configuration
 - **[WEB_UI_SETUP.md](WEB_UI_SETUP.md)** - Web UI installation guide
 - **[WEB_UI_README.md](WEB_UI_README.md)** - Web UI features and usage
